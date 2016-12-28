@@ -13,30 +13,36 @@ using System.Threading.Tasks;
 
 namespace MC_Pi
 {
-    class Program
+    class MC_Pi
     {
         // num_trials was a constant initially .. now I will prompt for values.
         private const int K = 1000;
-        private static long num_trial = 5000 * K; // number of trials
+        private static long num_trials = 5000 * K; // number of trials
 
         static void Main(string[] args)
         {
             double radius = 1.0;
 
             Console.Write("Enter number of trials: ");
-            if (!long.TryParse(Console.ReadLine(), out num_trial))
+            if (!long.TryParse(Console.ReadLine(), out num_trials))
             {
                 Console.Error.WriteLine("*** ERROR: invalid entry - exiting program.");
                 Environment.Exit(-1);
             }
 
-            Console.WriteLine("Estimating Pi ({0:f5}) using Monte Carlo Simulation", Math.PI);
-            Console.WriteLine("Number of trials is: {0:0,0}\n", num_trial);
+            if (num_trials < 1)
+            {
+                Console.Error.WriteLine("*** ERROR: negative value entered - exiting program.");
+                Environment.Exit(-2);
+            }
+
+            Console.WriteLine("\nEstimating Pi ({0:f5}) using Monte Carlo Simulation", Math.PI);
+            Console.WriteLine("Number of trials is: {0:0,0}\n", num_trials);
 
             System.Diagnostics.Stopwatch stopWatch = new System.Diagnostics.Stopwatch();
             stopWatch.Start();
 
-            double pi_est = computePi(num_trial, radius);
+            double pi_est = computePi(num_trials, radius);
 
             stopWatch.Stop();
             TimeSpan ts = stopWatch.Elapsed;
