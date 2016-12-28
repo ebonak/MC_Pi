@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 /* 
  * compute the value of Pi using a Monte Carlo Simulation
  * based on https://www.youtube.com/watch?v=VJTFfIqO4TU
+ * 
  * e.bonakdarian Dec 2016
  */
 
@@ -81,7 +82,7 @@ namespace MC_Pi
             Random rand = new Random();
             double x = 0.0;
             double y = 0.0;
-            int update_interval = (int) (num_trial / 10);
+            int update_interval = (int)(num_trial / 10);
             double pi_est = 0.0;
 
             Console.WriteLine("Updated inteval at {0:n0} iterations", update_interval);
@@ -95,9 +96,9 @@ namespace MC_Pi
 
                 pi_est = (4.0 * in_count) / num_trial;
 
-                if ((i+1) % update_interval == 0)
+                if ((i + 1) % update_interval == 0)
                     Console.WriteLine("pi est: {0:f6}  diff: {1,9:f6}  [{2,9:N0}]",
-                                       pi_est, Math.PI - pi_est, i+1);
+                                       pi_est, Math.PI - pi_est, i + 1);
             }
 
             return pi_est;
