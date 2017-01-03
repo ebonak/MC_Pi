@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -55,8 +56,11 @@ namespace MC_Pi
 
             writeResults(elapsedTime, pi_est);
             banner();
-            // Console.WriteLine("\nGood-bye.");
-            // Console.ReadLine();
+
+            Console.WriteLine("\nGood-bye.");
+
+            if (Debugger.IsAttached)
+                Console.ReadLine();
         }
 
 
